@@ -1,0 +1,5 @@
+<div class="app-pokemon-list" *ngIf="selectedGen">
+  <mat-list>
+    <mat-list-item [ngClass]="'pokemon'" *ngFor="let mon of selectedGen.pokemon_species">{{mon.name}}</mat-list-item>
+  </mat-list>
+</div>

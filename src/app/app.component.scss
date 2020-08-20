@@ -1,0 +1,23 @@
+.app-container {
+  .title-container {
+
+    .title {
+      line-height: 24px;
+      margin-left: 8px;
+    }
+
+    .subtitle {
+      color: rgba(255, 255, 255, 0.85);
+      margin-left: 8px;
+
+      a {
+        color: rgba(255, 255, 255, 0.85);
+        text-decoration: none;
+
+        &:hover {
+          color: white;
+        }
+      }
+    }
+  }
+}

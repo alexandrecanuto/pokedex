@@ -1,0 +1,12 @@
+<div class="app-generations">
+  <mat-form-field>
+    <mat-label>Generation</mat-label>
+    <mat-select [(value)]="selectedGen" (selectionChange)="onGenChange()">
+      <mat-option
+        *ngFor="let gen of generations"
+        [value]="gen">
+        {{gen.displayName || gen.name}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+</div>
