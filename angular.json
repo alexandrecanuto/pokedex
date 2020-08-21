@@ -28,7 +28,9 @@
               "src/assets"
             ],
             "styles": [
+              "src/variables.scss",
               "src/theme.scss",
+              "src/typography.scss",
               "src/styles.scss"
             ],
             "scripts": []
@@ -93,7 +95,9 @@
               "src/assets"
             ],
             "styles": [
+              "src/variables.scss",
               "src/theme.scss",
+              "src/typography.scss",
               "src/styles.scss"
             ],
             "scripts": []

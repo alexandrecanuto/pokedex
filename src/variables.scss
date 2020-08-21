@@ -1,0 +1,165 @@
+@import '~@angular/material/theming';
+@import '~@angular/flex-layout/mq';
+
+// Define our primary theme:
+$md-pokedex-primary: (
+  50: #ffe9e6,
+  100: #ffc7c0,
+  200: #ffa296,
+  300: #ff7c6b,
+  400: #ff604c,
+  500: #ff442c,
+  600: #ff3e27,
+  700: #ff3521,
+  800: #ff2d1b,
+  900: #ff1f10,
+  A100: #ffffff,
+  A200: #fff8f8,
+  A400: #ffc8c5,
+  A700: #ffafac,
+  contrast: (
+      50: #000000,
+      100: #000000,
+      200: #000000,
+      300: #000000,
+      400: #000000,
+      500: #ffffff,
+      600: #ffffff,
+      700: #ffffff,
+      800: #ffffff,
+      900: #ffffff,
+      A100: #000000,
+      A200: #000000,
+      A400: #000000,
+      A700: #000000,
+  )
+);
+
+// Define our accent theme:
+$md-pokedex-accent: (
+  50: #ffedea,
+  100: #ffd3cb,
+  200: #ffb5a8,
+  300: #ff9785,
+  400: #ff816a,
+  500: #ff6b50,
+  600: #ff6349,
+  700: #ff5840,
+  800: #ff4e37,
+  900: #ff3c27,
+  A100: #ffffff,
+  A200: #ffffff,
+  A400: #ffd8d4,
+  A700: #ffc1bb,
+  contrast: (
+    50: #000000,
+    100: #000000,
+    200: #000000,
+    300: #000000,
+    400: #000000,
+    500: #000000,
+    600: #000000,
+    700: #000000,
+    800: #000000,
+    900: #ffffff,
+    A100: #000000,
+    A200: #000000,
+    A400: #000000,
+    A700: #000000,
+  )
+);
+
+// Define the palettes for your theme using the Material Design palettes available in palette.scss
+// (imported above). For each palette, you can optionally specify a default, lighter, and darker
+// hue. Available color palettes: https://material.io/design/color/
+$app-primary: mat-palette($md-pokedex-primary);
+$app-accent: mat-palette($md-pokedex-accent);
+
+// Define our foreground palette for the theme:
+$app-foreground: (
+  base:              black,
+  divider:           $dark-dividers,
+  dividers:          $dark-dividers,
+  disabled:          $dark-disabled-text,
+  disabled-button:   rgba(black, 0.26),
+  disabled-text:     $dark-disabled-text,
+  elevation:         black,
+  hint-text:         $dark-disabled-text,
+  secondary-text:    $dark-secondary-text,
+  icon:              rgba(black, 0.54),
+  icons:             rgba(black, 0.54),
+  text:              rgba(black, 0.87),
+  slider-min:        rgba(black, 0.87),
+  slider-off:        rgba(black, 0.26),
+  slider-off-active: rgba(black, 0.38),
+);
+
+// Define our background palette for the theme:
+$app-background: (
+  status-bar: map_get($mat-grey, 300),
+  app-bar:    #333,
+  background: map_get($app-accent, 500),
+  hover:      rgba(black, 0.04), // TODO(kara): check style with Material Design UX
+  card:       white,
+  dialog:     white,
+  disabled-button: rgba(black, 0.12),
+  raised-button: white,
+  focused-button: $dark-focused,
+  selected-button: map_get($mat-grey, 300),
+  selected-disabled-button: map_get($mat-grey, 400),
+  disabled-button-toggle: map_get($mat-grey, 200),
+  unselected-chip: map_get($mat-grey, 300),
+  disabled-list-option: map_get($mat-grey, 200),
+  tooltip: map_get($mat-grey, 700),
+);
+
+// The warn palette is optional (defaults to red).
+$app-warn: mat-palette($mat-red);
+
+// Create the theme object. A theme consists of configurations for individual
+// theming systems such as `color` or `typography`.
+$app-theme: (
+  primary: $app-primary,
+  accent: $app-accent,
+  warn: $app-warn,
+  is-dark: false,
+  foreground: $app-foreground,
+  background: $app-background,
+);
+
+$primary: mat-color($app-primary);
+$accent: mat-color($app-accent);
+$warn: mat-color($app-warn);
+$background: #DBDBD9;
+$border-dark-color: #D2D2D2;
+$border-light-color: #F2F2F2;
+
+// Type colors:
+$type-bug-color: #8BC146;
+$type-dark-color: #5B5464;
+$type-dragon-color: #0071BF;
+$type-electric-color: #FDD055;
+$type-fairy-color: #F68EE2;
+$type-fighting-color: #DC396B;
+$type-fire-color: #FF995F;
+$type-flying-color: #86ABDB;
+$type-ghost-color: #476CA9;
+$type-grass-color: #4BBD64;
+$type-ground-color: #E6734D;
+$type-ice-color: #56D0C1;
+$type-normal-color: #8F9BA2;
+$type-poison-color: #B06CC4;
+$type-psychic-color: #FF6B7B;
+$type-rock-color: #C9B690;
+$type-steel-color: #4A90A1;
+$type-water-color: #2F93D2;
+
+// Helper functions:
+@function spacing($amount: 1, $important: false) {
+  $spacing: 8;
+  @if $important {
+    @return #{$spacing * $amount}px !important;
+  } @else {
+    @return #{$spacing * $amount}px;
+  }
+}

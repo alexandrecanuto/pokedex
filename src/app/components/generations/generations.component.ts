@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { GenerationService } from '../../services/generation/generation.service';
+// Interfaces
 import { Generation } from '../../interfaces/generation';
+// Services
+import { GenerationService } from '../../services/generation/generation.service';
 
 @Component({
   selector: 'app-generations',
@@ -10,11 +12,14 @@ import { Generation } from '../../interfaces/generation';
 export class GenerationsComponent implements OnInit {
   generations: Generation[];
   selectedGen: Generation;
-  details: Generation;
 
   constructor(private generationService: GenerationService) { }
 
   ngOnInit() {
+    this.generationService.currentGenNameUpdated.subscribe(() => {
+      let genName = this.generationService.getCurrentGenName();
+      this.selectedGen = this.generationService.getGenByName(genName);
+    });
     this.getGenerations();
   }
 
@@ -30,29 +35,12 @@ export class GenerationsComponent implements OnInit {
     }
   }
 
-  /**
-   * Fetches details of one generation from the service.
-   */
-  getDetails(): void {
-    this.details = this.generationService.getGeneration(this.selectedGen.name);
-
-    if (this.details) {
-      this.generationService.setCurrentGen(this.selectedGen.name);
-    } else {
-      this.generationService.fetchGeneration(this.selectedGen.name)
-      .subscribe(details => {
-        this.details = details;
-        this.generationService.setCurrentGen(this.selectedGen.name);
-      });
-    }
-  }
-
   onGenChange(): void {
-    console.log('this.selectedGen:', this.selectedGen);
     if (!this.selectedGen)
       return;
+    console.log('onGenChange');
 
-    this.getDetails();
+    this.generationService.setCurrentGenName(this.selectedGen.name);
   }
 
 }

@@ -1,0 +1,46 @@
+<div class="app-pokemon" fxFill fxLayoutAlign="center flex-start" fxLayoutAlign.gt-xs="center center">
+  <div *ngIf="isLoadingPokemon || isLoadingSpecies" fxLayoutAlign="center">
+    <mat-spinner></mat-spinner>
+  </div>
+
+  <div class="container" fxLayoutAlign="space-evenly center" fxLayout="column" fxLayout.gt-md="row" *ngIf="!isLoadingPokemon && !isLoadingSpecies && pokemon">
+    <div class="dex-image">
+      <img
+        class="sprite"
+        matListAvatar
+        src="{{pokemon.sprites.main}}"
+        default="assets/images/ball.png"
+        alt="{{pokemon.name}}"/>
+    </div>
+
+    <div class="details" fxLayout="column">
+      <app-pokemon-header [pokemon]="pokemon"></app-pokemon-header>
+
+      <div class="dex-info" fxLayout="column">
+        <div class="info-row" fxLayout="column" fxLayout.gt-xs="row">
+          <div class="info-cell label">Type</div>
+          <div class="info-cell value">
+            <ng-container *ngIf="pokemon.types.length">
+              <app-pokemon-type [type]="type" *ngFor="let type of pokemon.types"></app-pokemon-type>
+            </ng-container>
+            <span *ngIf="!pokemon.types.length">???</span>
+          </div>
+        </div>
+
+        <div class="info-row" fxLayout="column" fxLayout.gt-xs="row">
+          <div class="info-cell label">Height</div>
+          <div class="info-cell value">{{pokemon.height | height }}</div>
+        </div>
+
+        <div class="info-row" fxLayout="column" fxLayout.gt-xs="row">
+          <div class="info-cell label">Weight</div>
+          <div class="info-cell value">{{pokemon.weight | weight }}</div>
+        </div>
+      </div>
+
+      <div class="dex-entry">
+        <p *ngIf="species?.dex_entry">{{species.dex_entry}}</p>
+      </div>
+    </div>
+  </div>
+</div>

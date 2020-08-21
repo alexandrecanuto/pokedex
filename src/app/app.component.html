@@ -1,18 +1,22 @@
 <div class="app-container" fxFill fxLayout="column">
-  <mat-toolbar color="primary">
-    <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon" (click)="drawer.toggle()">
+  <mat-toolbar>
+    <button mat-icon-button (click)="drawer.toggle()">
       <mat-icon>menu</mat-icon>
     </button>
     <div class="title-container" fxFlex fxLayout.xs="column" fxLayoutAlign="space-between center" fxLayoutAlign.xs="center flex-start">
       <span class="title">{{title}}</span>
-      <span class="subtitle mat-body-1">made with 💛 by <a href="https://canuto.dev" class="mat-body-2" target="_blank">Alex Canuto</a></span>
+      <span class="subtitle mat-body-1">made with ♥ by <a href="https://canuto.dev" class="mat-body-2" target="_blank">Alex Canuto</a></span>
     </div>
   </mat-toolbar>
 
   <mat-drawer-container fxFlex>
-    <mat-drawer #drawer mode="side" opened>
-      <app-generations></app-generations>
-      <app-pokemon-list></app-pokemon-list>
+    <mat-drawer #drawer color="primary" mode="{{media.isActive('gt-sm') ? 'side' : 'over'}}" opened="{{media.isActive('gt-sm') ? true : false}}">
+      <div class="drawer-content" fxFill fxLayout="column">
+        <app-generations></app-generations>
+        <app-pokemon-list class="pokemon-list" fxFlex></app-pokemon-list>
+      </div>
     </mat-drawer>
+
+    <router-outlet></router-outlet>
   </mat-drawer-container>
 </div>

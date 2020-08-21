@@ -1,0 +1,120 @@
+@import '../../../variables';
+
+.app-pokemon {
+  height: auto !important;
+  padding: spacing(3);
+
+  @include layout-bp(gt-xs) {
+    height: 100% !important;
+  }
+
+  .container {
+    width: 100%;
+  }
+
+  .dex-image {
+    max-width: 200px;
+    text-align: center;
+    width: 100%;
+
+    @include layout-bp(gt-xs) {
+      max-width: 280px;
+    }
+    @include layout-bp(gt-md) {
+      max-width: 400px;
+    }
+
+    img {
+      max-width: 100%;
+    }
+  }
+
+  .details {
+    max-width: 600px;
+    width: 100%;
+
+    .dex-info {
+      border-collapse: collapse;
+      margin: spacing(2) spacing(0) 4px;
+
+      @include layout-bp(gt-xs) {
+        margin: spacing(4) spacing(3) 4px;
+      }
+
+      .info-row {
+
+        &:last-of-type {
+          .info-cell.label,
+          .info-cell.value {
+            border: none;
+          }
+        }
+
+        .info-cell {
+          display: table-cell;
+          flex: 1;
+          font-size: 16px;
+          padding: spacing(2) spacing(1.5);
+
+          @include layout-bp(gt-xs) {
+            font-size: 18px;
+          }
+          @include layout-bp(gt-md) {
+            font-size: 24px;
+          }
+
+          &.label {
+            align-items: center;
+            background-color: $background;
+            border-bottom: 4px solid $border-dark-color;
+            display: flex;
+            justify-content: center;
+          }
+
+          &.value {
+            background-color: white;
+            border-bottom: 4px solid $border-light-color;
+            display: flex;
+            justify-content: center;
+
+            @include layout-bp(gt-md) {
+              justify-content: flex-start;
+            }
+          }
+
+          app-pokemon-type {
+            display: flex;
+            margin-right: spacing();
+
+            &:last-of-type {
+              margin-right: 0;
+            }
+          }
+        }
+      }
+    }
+
+    .dex-entry {
+      background-color: white;
+      margin: 0;
+      margin-top: 0;
+
+      @include layout-bp(gt-xs) {
+        margin: spacing(3);
+      }
+
+      p {
+        font-size: 18px;
+        line-height: 24px;
+        margin: 0;
+        padding: spacing(2);
+
+        @include layout-bp(gt-md) {
+          font-size: 24px;
+          line-height: 32px;
+          padding: spacing(3);
+        }
+      }
+    }
+  }
+}

@@ -1,5 +1,5 @@
-import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { EventEmitter, Injectable } from '@angular/core';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { map, tap } from 'rxjs/operators';
 import { Observable, of } from 'rxjs';
 // Interfaces:
@@ -10,10 +10,10 @@ import { Generation } from '../../interfaces/generation';
   providedIn: 'root'
 })
 export class GenerationService {
-  currentGenUpdated: EventEmitter<Generation> = new EventEmitter();
+  currentGenNameUpdated: EventEmitter<Generation> = new EventEmitter();
 
-  // Current generation variable.
-  private currentGen: Generation;
+  // Current generation name variable.
+  private currentGenName: string;
   // Generation details storage object.
   private details = {};
   // Generations storage object.
@@ -22,20 +22,6 @@ export class GenerationService {
   private url = 'https://pokeapi.co/api/v2/generation';
 
   constructor(private http: HttpClient) { }
-
-  /**
-   * Fetch generations from the API.
-   * Resolves each item and then return.
-   * @return {Observable<Generation[]>}
-   */
-  fetchGenerations(): Observable<Generation[]> {
-    return this.http.get<APIResults>(this.url).pipe(
-      map(res => {
-        this.generations = res.results.map(this.resolveGeneration);
-        return this.generations;
-      }),
-    );
-  }
 
   /**
    * Fetch a generation's details from the API.
@@ -50,11 +36,26 @@ export class GenerationService {
   }
 
   /**
-   * Getter for 'currentGen'.
-   * @return {Generation}
+   * Fetch generations from the API.
+   * Resolves each item and then return.
+   * @return {Observable<Generation[]>}
    */
-  getCurrentGen(): Generation {
-    return this.currentGen;
+  fetchGenerations(): Observable<Generation[]> {
+    return this.http.get<APIResults>(this.url).pipe(
+      map(res => {
+        this.generations = res.results.map(this.resolveGeneration);
+        // this.setCurrentGenName('generation-i');
+        return this.generations;
+      }),
+    );
+  }
+
+  /**
+   * Getter for 'currentGenName'.
+   * @return {string}
+   */
+  getCurrentGenName(): string {
+    return this.currentGenName;
   }
 
   /**
@@ -66,6 +67,13 @@ export class GenerationService {
       return;
 
     return this.details[name];
+  }
+
+  getGenByName(name: string): Generation {
+    if (!name?.length)
+      return;
+
+    return this.generations.filter(gen => gen.name === name)[0];
   }
 
   /**
@@ -113,10 +121,10 @@ export class GenerationService {
   }
 
   /**
-   * Setter for 'currentGen'.
+   * Setter for 'currentGenName'.
    */
-  setCurrentGen(name: string) {
-    this.currentGen = this.details[name];
-    this.currentGenUpdated.emit();
+  setCurrentGenName(name: string) {
+    this.currentGenName = name;
+    this.currentGenNameUpdated.emit();
   }
 }

@@ -1,0 +1,77 @@
+@import '../../../variables';
+
+.app-pokemon-header {
+  background-color: $primary;
+  height: spacing(6);
+  position: relative;
+  width: 100%;
+
+  @include layout-bp(gt-md) {
+    height: spacing(8);
+  }
+
+  .sprite {
+    position: absolute;
+    width: spacing(6);
+    display: none;
+
+    @include layout-bp(gt-xs) {
+      width: spacing(10);
+    }
+    @include layout-bp(gt-md) {
+      width: spacing(12);
+    }
+
+    &.image-loaded {
+      display: block;
+    }
+  }
+
+  .text {
+    font-size: 18px;
+    height: 100%;
+    margin-left: spacing(6);
+
+    @include layout-bp(gt-xs) {
+      font-size: 24px;
+      margin-left: spacing(10);
+    }
+    @include layout-bp(gt-md) {
+      font-size: 30px;
+      margin-left: spacing(12);
+    }
+
+    .number {
+      color: white;
+    }
+
+    .name {
+      background-color: black;
+      color: white;
+      display: inline-block;
+      font-weight: 600;
+      height: 100%;
+      margin-left: spacing();
+      min-width: 60%;
+      padding-left: spacing();
+      padding-right: spacing();
+      position: relative;
+      text-transform: capitalize;
+
+      @include layout-bp(gt-xs) {
+        min-width: 70%;
+      }
+
+      &:before {
+        background-color: black;
+        content: "";
+        display: block;
+        height: 100%;
+        left: spacing(-1);
+        position: absolute;
+        transform: skew(-12deg);
+        width: 16px;
+      }
+    }
+  }
+}

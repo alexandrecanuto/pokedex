@@ -1,0 +1,8 @@
+@import 'variables';
+
+$custom-typography: mat-typography-config(
+  $font-family: 'Open Sans',
+  $title: mat-typography-level(20px, 32px, 600),
+);
+
+@include angular-material-typography($custom-typography);

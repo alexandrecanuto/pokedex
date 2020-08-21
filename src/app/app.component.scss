@@ -1,14 +1,30 @@
-.app-container {
-  .title-container {
+@import '../variables';
 
+.app-container {
+  .mat-icon-button {
+    color: white;
+  }
+
+  .title-container {
     .title {
+      color: white;
+      font-size: 16px;
       line-height: 24px;
       margin-left: 8px;
+
+      @include layout-bp(gt-xs) {
+        font-size: 18px;
+      }
     }
 
     .subtitle {
       color: rgba(255, 255, 255, 0.85);
       margin-left: 8px;
+      font-size: 12px;
+
+      @include layout-bp(gt-xs) {
+        font-size: 14px;
+      }
 
       a {
         color: rgba(255, 255, 255, 0.85);
@@ -18,6 +34,14 @@
           color: white;
         }
       }
+    }
+  }
+
+  .drawer-content {
+    overflow: hidden;
+
+    .pokemon-list {
+      overflow-y: scroll;
     }
   }
 }

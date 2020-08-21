@@ -1,0 +1,71 @@
+@import '../../../variables';
+
+$radius: 20px;
+
+.app-pokemon-list-item {
+  border-radius: $radius;
+  height: spacing(5);
+  margin: spacing(2) spacing();
+  position: relative;
+  width: calc(100% - #{spacing(2)});
+
+  &.current,
+  &:hover {
+    background-color: $primary;
+
+    .text {
+      .number {
+        color: white;
+      }
+
+      .name {
+        background-color: black;
+        color: white;
+
+        &:before {
+          display: block;
+        }
+      }
+    }
+  }
+
+  .sprite {
+    position: absolute;
+    width: spacing(8);
+    display: none;
+
+    &.image-loaded {
+      display: block;
+    }
+  }
+
+  .text {
+    height: 100%;
+    margin-left: spacing(8);
+
+    .name {
+      border-bottom-right-radius: $radius;
+      border-top-right-radius: $radius;
+      display: inline-block;
+      font-weight: 600;
+      height: 100%;
+      margin-left: spacing();
+      min-width: 110px;
+      padding-left: spacing();
+      padding-right: spacing();
+      position: relative;
+      text-transform: capitalize;
+
+      &:before {
+        background-color: black;
+        content: "";
+        display: none;
+        height: 100%;
+        left: spacing(-1);
+        position: absolute;
+        transform: skew(-12deg);
+        width: 12px;
+      }
+    }
+  }
+}

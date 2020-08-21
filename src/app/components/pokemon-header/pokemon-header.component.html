@@ -1,0 +1,12 @@
+<div class="app-pokemon-header" routerLink="/pokemon/{{pokemon.id}}" fxLayout fxLayoutAlign="flex-start center">
+  <img
+    class="sprite"
+    matListAvatar
+    src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/{{pokemon.id}}.png"
+    default="assets/images/ball.png"
+    alt="{{pokemon.name}}"/>
+  <div class="text" fxFlex fxLayoutAlign="space-between center">
+    <span class="number">No. {{pokemon.id | number: '3.0'}}</span>
+    <span class="name" fxLayoutAlign="flex-start center">{{pokemon.name}}</span>
+  </div>
+</div>

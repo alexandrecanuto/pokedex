@@ -1,0 +1,60 @@
+@import '../../../variables';
+
+.app-pokemon-type {
+  border-radius: spacing(0.5);
+  color: white;
+  display: inline-flex;
+  overflow: hidden;
+
+  .icon {
+    height: 24px;
+    padding: 2px;
+    width: 24px;
+  }
+
+  .label {
+    background-color: #333;
+    font-size: 16px;
+    font-weight: 600;
+    opacity: 0.9;
+    padding-left: 6px;
+    padding-right: spacing();
+    position: relative;
+    text-transform: uppercase;
+    margin-left: spacing(0.5);
+
+    @include layout-bp(gt-xs) {
+      font-size: 20px;
+    }
+
+    &:before {
+      background-color: #333;
+      content: "";
+      display: block;
+      height: 100%;
+      left: spacing(-0.5);
+      position: absolute;
+      transform: skew(-12deg);
+      width: spacing();
+    }
+  }
+
+  &.type-bug      { background-color: $type-bug-color; }
+  &.type-dark     { background-color: $type-dark-color; }
+  &.type-dragon   { background-color: $type-dragon-color; }
+  &.type-electric { background-color: $type-electric-color; }
+  &.type-fighting { background-color: $type-fighting-color; }
+  &.type-fairy    { background-color: $type-fairy-color; }
+  &.type-fire     { background-color: $type-fire-color; }
+  &.type-flying   { background-color: $type-flying-color; }
+  &.type-ghost    { background-color: $type-ghost-color; }
+  &.type-grass    { background-color: $type-grass-color; }
+  &.type-ground   { background-color: $type-ground-color; }
+  &.type-ice      { background-color: $type-ice-color; }
+  &.type-normal   { background-color: $type-normal-color; }
+  &.type-poison   { background-color: $type-poison-color; }
+  &.type-psychic  { background-color: $type-psychic-color; }
+  &.type-rock     { background-color: $type-rock-color; }
+  &.type-steel    { background-color: $type-steel-color; }
+  &.type-water    { background-color: $type-water-color; }
+}

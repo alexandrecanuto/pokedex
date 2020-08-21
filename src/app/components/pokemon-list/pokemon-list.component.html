@@ -1,5 +1,11 @@
-<div class="app-pokemon-list" *ngIf="selectedGen">
-  <mat-list>
-    <mat-list-item [ngClass]="'pokemon'" *ngFor="let mon of selectedGen.pokemon_species">{{mon.name}}</mat-list-item>
-  </mat-list>
+<div class="app-pokemon-list">
+  <div *ngIf="isLoading" fxLayoutAlign="center">
+    <mat-spinner diameter="24"></mat-spinner>
+  </div>
+
+  <div *ngIf="!isLoading && currentGen">
+    <mat-nav-list class="list">
+      <app-pokemon-list-item [pokemon]="pokemon" [isCurrent]="pokemonId == pokemon.id" *ngFor="let pokemon of currentGen.pokemon_species"></app-pokemon-list-item>
+    </mat-nav-list>
+  </div>
 </div>
