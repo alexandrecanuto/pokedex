@@ -90,6 +90,15 @@
       }
     }
 
+    .evolutions {
+      background-color: white;
+      margin: 0 0 4px;
+
+      @include layout-bp(gt-xs) {
+        margin: 0 spacing(3) 4px;
+      }
+    }
+
     .dex-entry {
       background-color: white;
       margin: 0;
@@ -97,6 +106,7 @@
 
       @include layout-bp(gt-xs) {
         margin: spacing(3);
+        margin-top: 0;
       }
 
       p {

@@ -7,6 +7,6 @@
     alt="{{pokemon.name}}"/>
   <div class="text" fxFlex fxLayoutAlign="space-between center">
     <span class="number">No. {{pokemon.id | number: '3.0'}}</span>
-    <span class="name" fxLayoutAlign="flex-start center">{{pokemon.name}}</span>
+    <span class="name" fxLayoutAlign="flex-start center">{{pokemon.displayName || pokemon.name}}</span>
   </div>
 </a>

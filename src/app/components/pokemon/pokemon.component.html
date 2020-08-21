@@ -16,6 +16,10 @@
     <div class="details" fxLayout="column">
       <app-pokemon-header [pokemon]="pokemon"></app-pokemon-header>
 
+      <!-- <div class="evolutions" fxLayout="row wrap" fxLayoutAlign="space-evenly center" *ngIf="species && species.varieties.length > 1">
+        <b *ngFor="let variety of species.varieties">{{variety.pokemon.name}}</b>
+      </div> -->
+
       <div class="dex-info" fxLayout="column">
         <div class="info-row" fxLayout="column" fxLayout.gt-xs="row">
           <div class="info-cell label">Type</div>
@@ -36,6 +40,10 @@
           <div class="info-cell label">Weight</div>
           <div class="info-cell value">{{pokemon.weight | weight }}</div>
         </div>
+      </div>
+
+      <div class="evolutions" fxLayout="row wrap" fxLayoutAlign="space-evenly center" *ngIf="evolutions && evolutions.length > 1">
+        <app-evolution [evolution]="evolution" *ngFor="let evolution of evolutions"></app-evolution>
       </div>
 
       <div class="dex-entry">

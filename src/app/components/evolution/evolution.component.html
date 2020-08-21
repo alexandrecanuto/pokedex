@@ -1,0 +1,9 @@
+<div class="app-evolution" routerLink="/pokemon/{{evolution.id}}" fxLayout="column" fxLayoutAlign="center center">
+  <img
+    class="sprite"
+    matListAvatar
+    src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/{{evolution.id}}.png"
+    default="assets/images/ball.png"
+    alt="{{evolution.name}}"/>
+  <!-- <span class="mat-caption">#{{evolution.id | number: '3.0'}}</span> -->
+</div>

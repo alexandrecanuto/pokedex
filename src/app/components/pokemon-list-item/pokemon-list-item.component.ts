@@ -20,7 +20,7 @@ export class PokemonListItemComponent implements OnInit {
   }
 
   onClick(): void {
-    if (this.media.isActive('xs'))
+    if (!this.media.isActive('gt-md'))
       this.sidenavService.close();
   }
 }

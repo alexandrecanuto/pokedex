@@ -32,6 +32,7 @@ import { HeightPipe } from './pipes/height/height.pipe';
 import { WeightPipe } from './pipes/weight/weight.pipe';
 import { ImagePreloadDirective } from './directives/image-preload.directive';
 import { PokemonHeaderComponent } from './components/pokemon-header/pokemon-header.component';
+import { EvolutionComponent } from './components/evolution/evolution.component';
 
 @NgModule({
   declarations: [
@@ -48,7 +49,8 @@ import { PokemonHeaderComponent } from './components/pokemon-header/pokemon-head
     HeightPipe,
     WeightPipe,
     ImagePreloadDirective,
-    PokemonHeaderComponent
+    PokemonHeaderComponent,
+    EvolutionComponent
   ],
   imports: [
     AppRoutingModule,

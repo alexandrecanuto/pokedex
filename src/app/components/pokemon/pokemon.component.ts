@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { finalize } from 'rxjs/operators';
 // Interfaces
+import { Evolution } from '../../interfaces/evolution';
 import { Pokemon } from '../../interfaces/pokemon';
 import { Species } from '../../interfaces/species';
 // Services
@@ -14,10 +15,12 @@ import { PokemonService } from '../../services/pokemon/pokemon.service';
   styleUrls: ['./pokemon.component.scss']
 })
 export class PokemonComponent implements OnInit {
+  evolutions: Species[];
+  isLoadingEvolutions: boolean;
   isLoadingPokemon: boolean;
   isLoadingSpecies: boolean;
-  pokemonId: string;
   pokemon: Pokemon;
+  pokemonId: string;
   species: Species;
 
   constructor(private route: ActivatedRoute, private generationService: GenerationService, private pokemonService: PokemonService) { }
@@ -57,10 +60,30 @@ export class PokemonComponent implements OnInit {
       .pipe(finalize(() => this.isLoadingSpecies = false))
       .subscribe(species => {
         this.species = species;
+        this.getEvolutions();
         this.generationService.setCurrentGenName(this.species.generation.name);
       });
     } else {
+      this.getEvolutions();
       this.generationService.setCurrentGenName(this.species.generation.name);
+    }
+  }
+
+  /**
+   * Fetches evolution details of one Pokémon species from the service.
+   */
+  getEvolutions(): void {
+    this.evolutions = this.pokemonService.getEvolutions(this.pokemonId);
+    console.log('this.evolutions:', this.evolutions);
+
+    if (!this.evolutions) {
+      this.isLoadingEvolutions = true;
+      this.pokemonService.fetchEvolutions(this.pokemonId, this.species.evolution_chain.url)
+      .pipe(finalize(() => this.isLoadingEvolutions = false))
+      .subscribe(evolutions => {
+        this.evolutions = evolutions;
+        console.log('this.evolutions:', this.evolutions);
+      });
     }
   }
 

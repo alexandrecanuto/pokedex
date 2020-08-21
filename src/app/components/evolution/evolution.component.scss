@@ -1,0 +1,12 @@
+@import '../../../variables';
+
+.app-evolution {
+  // padding-bottom: spacing();
+  cursor: pointer;
+  outline: none;
+
+  img {
+    display: block;
+    width: spacing(10);
+  }
+}

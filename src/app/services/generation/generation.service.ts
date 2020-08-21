@@ -5,6 +5,8 @@ import { Observable, of } from 'rxjs';
 // Interfaces:
 import { APIResults } from '../../interfaces/api-results';
 import { Generation } from '../../interfaces/generation';
+// Services:
+import { PokemonService } from '../pokemon/pokemon.service';
 
 @Injectable({
   providedIn: 'root'
@@ -21,7 +23,7 @@ export class GenerationService {
   // The base string for fetching generations.
   private url = 'https://pokeapi.co/api/v2/generation';
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private pokemonService: PokemonService) { }
 
   /**
    * Fetch a generation's details from the API.
@@ -92,13 +94,7 @@ export class GenerationService {
   resolveDetails(details?: Generation): Generation {
 
     if (details?.pokemon_species) {
-      details.pokemon_species = details.pokemon_species.map(species => {
-        if (!species.id) {
-          const parts = species.url.split('/');
-          species.id = parseInt(parts[parts.length - 2]);
-        }
-        return species;
-      }).sort((a, b) => a.id - b.id);
+      details.pokemon_species = details.pokemon_species.map(this.pokemonService.resolveSpecies).sort((a, b) => a.id - b.id);
     }
 
     return details;
