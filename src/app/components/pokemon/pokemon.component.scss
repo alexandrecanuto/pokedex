@@ -4,10 +4,6 @@
   height: auto !important;
   padding: spacing(3);
 
-  @include layout-bp(gt-xs) {
-    height: 100% !important;
-  }
-
   .container {
     width: 100%;
   }

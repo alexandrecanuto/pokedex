@@ -11,6 +11,10 @@ export class SidenavService {
     this.sidenav = sidenav;
   }
 
+  public isOpen() {
+    return this.sidenav.opened;
+  }
+
   public open() {
     return this.sidenav.open();
   }

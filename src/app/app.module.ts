@@ -20,7 +20,7 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 // Components:
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
-import { EmptyComponent } from './components/empty/empty.component';
+import { InitialComponent } from './components/initial/initial.component';
 import { GenerationsComponent } from './components/generations/generations.component';
 import { PokemonComponent } from './components/pokemon/pokemon.component';
 import { PokemonListComponent } from './components/pokemon-list/pokemon-list.component';
@@ -41,7 +41,7 @@ import { PokemonHeaderComponent } from './components/pokemon-header/pokemon-head
     PokemonListComponent,
     PokemonListItemComponent,
     PokemonComponent,
-    EmptyComponent,
+    InitialComponent,
     PokemonTypeComponent,
 
     // Pipes

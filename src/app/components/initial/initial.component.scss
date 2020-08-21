@@ -1,0 +1,63 @@
+@import '../../../variables';
+
+.app-initial {
+  height: auto !important;
+  padding: spacing(2);
+
+  .hello-there {
+    background-color: white;
+    max-width: 600px;
+    padding: spacing(2);
+
+    p {
+      font-size: 14px;
+      line-height: 28px;
+      margin-bottom: spacing();
+
+      &:last-of-type {
+        margin-bottom: 0;
+      }
+
+      @include layout-bp(gt-md) {
+        font-size: 16px;
+        line-height: 22px;
+        margin-bottom: spacing(2);
+      }
+
+      a {
+        color: $primary;
+        text-decoration: none;
+
+        &:hover {
+          text-decoration: underline;
+        }
+      }
+    }
+
+    button {
+      margin-top: spacing(2);
+    }
+  }
+
+  .pokemon-of-the-day {
+    width: 100%;
+    max-width: 600px;
+
+    .dex-image {
+      cursor: pointer;
+      max-width: 200px;
+      outline: none;
+      text-align: center;
+      width: 100%;
+      margin: spacing(2) auto;
+
+      @include layout-bp(gt-xs) {
+        max-width: 280px;
+      }
+
+      img {
+        max-width: 100%;
+      }
+    }
+  }
+}
